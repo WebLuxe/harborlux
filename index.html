@@ -3,47 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Harborlux — Claim Your Summit</title>
-<meta name="description" content="Harborlux: harbour-view penthouses above a city that never sleeps. Claim your summit.">
+<title>Doorgesh — Claim Your Summit</title>
+<meta name="description" content="Doorgesh (Zenn Prxd): builder, drummer and producer from Mauritius. High-voltage experiments, custom audio systems, sim rigs and websites. Claim your summit.">
 <meta name="theme-color" content="#0D0A22">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230D0A22'/%3E%3Cpath d='M7 23l9-14 9 14' fill='none' stroke='%23F2B8C0' stroke-width='2.4' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta property="og:title" content="Doorgesh — Claim Your Summit">
+<meta property="og:description" content="Doorgesh (Zenn Prxd): builder, drummer and producer from Mauritius. High-voltage experiments, custom audio systems, sim rigs and websites. Claim your summit.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/img/doorgesh-4-sunset.webp">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://images.higgs.ai" crossorigin>
 <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" crossorigin>
 <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
+<script>(function(){var h=document.documentElement,r=false,s=null;try{r=matchMedia("(prefers-reduced-motion: reduce)").matches;s=sessionStorage.getItem("dg-seen")}catch(e){}h.classList.add(!r&&!s?"intro":"nointro")})()</script>
+<link rel="stylesheet" href="css/site.css?v=1">
 <style>
-@font-face{
-  font-family:"Inter";
-  font-style:normal;
-  font-weight:100 900;
-  font-display:swap;
-  src:url(https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2) format("woff2");
-  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-:root{
-  --bg:#0D0A22;
-  --ink:#180F3C;
-  --btn:#F2B8C0;
-  --btn-hover:#F7C9D0;
-  --text:#FFFFFF;
-  --link:rgba(255,255,255,.88);
-  --glass:rgba(255,255,255,.14);
-  --glass-ring:rgba(255,255,255,.12);
-  --u:calc(min(100vw, 160vh) / 1440);
-}
-@supports (height:1svh){ :root{ --u:calc(min(100vw, 160svh) / 1440); } }
-
-*,*::before,*::after{box-sizing:border-box}
-html,body{margin:0;height:100%;overflow:hidden;background:var(--bg)}
-body{
-  font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  text-rendering:optimizeLegibility;
-}
-a{color:inherit;text-decoration:none}
-
-/* ---------- hero + stage ---------- */
+/* ---------- hero + stage (Claim Your Summit) ---------- */
 .hero{
   position:relative;
   isolation:isolate;
@@ -74,7 +48,6 @@ a{color:inherit;text-decoration:none}
 .headline{z-index:2}
 .mid{transform-origin:50% 45%;z-index:3}
 .front{transform-origin:50% 100%;z-index:4}
-
 .rain{opacity:0;transition:opacity .7s linear}
 .rain.on{opacity:1}
 .shade{
@@ -82,7 +55,6 @@ a{color:inherit;text-decoration:none}
   background:linear-gradient(to bottom, rgba(13,8,40,.45), rgba(13,8,40,0));
   pointer-events:none;
 }
-
 .glass{
   position:absolute;
   left:5.2%;right:4.1%;top:57.9%;height:25.4%;
@@ -91,12 +63,7 @@ a{color:inherit;text-decoration:none}
   backdrop-filter:blur(1.2px) saturate(1.05);
   border-top:1px solid rgba(255,255,255,.18);
 }
-
-/* ---------- headline ---------- */
-.headline{
-  position:absolute;top:0;left:0;width:100vw;height:100%;
-  pointer-events:none;
-}
+.headline{position:absolute;top:0;left:0;width:100vw;height:100%;pointer-events:none}
 .word{
   position:absolute;left:0;right:0;top:0;
   margin:0;
@@ -106,7 +73,7 @@ a{color:inherit;text-decoration:none}
   line-height:1;
   text-align:center;
   white-space:nowrap;
-  color:var(--text);
+  color:#fff;
 }
 .word .w{display:inline-block}
 .word .l{display:inline-block;will-change:transform,opacity}
@@ -121,81 +88,10 @@ a{color:inherit;text-decoration:none}
   line-height:1;
   text-align:center;
   white-space:nowrap;
-  color:var(--text);
+  color:#fff;
 }
-
-/* ---------- nav ---------- */
-.nav{
-  position:absolute;
-  z-index:8;
-  left:0;right:0;
-  top:calc(52 * var(--u));
-  height:calc(48 * var(--u));
-  padding:0 calc(125 * var(--u));
-  display:flex;align-items:center;justify-content:space-between;
-  font-size:calc(15 * var(--u));
-  line-height:1;
-}
-.brand{
-  font-weight:600;
-  font-size:calc(17 * var(--u));
-  letter-spacing:.28em;
-  color:var(--text);
-  white-space:nowrap;
-}
-.pills{
-  position:absolute;
-  left:50%;top:0;
-  height:100%;
-  transform:translateX(-50%);
-  display:flex;align-items:center;
-  gap:calc(6 * var(--u));
-  padding:calc(5 * var(--u));
-  border-radius:999px;
-  background:var(--glass);
-  -webkit-backdrop-filter:blur(12px);
-  backdrop-filter:blur(12px);
-  box-shadow:inset 0 0 0 1px var(--glass-ring);
-}
-.pills a{
-  height:calc(38 * var(--u));
-  padding:0 calc(22 * var(--u));
-  display:inline-flex;align-items:center;justify-content:center;
-  border-radius:999px;
-  font-weight:400;
-  color:var(--link);
-  white-space:nowrap;
-  transition:background-color .25s ease, color .25s ease;
-}
-.pills a:hover{background:rgba(255,255,255,.14)}
-.pills a[aria-current="page"]{background:#fff;color:var(--ink);font-weight:600}
-.nav__right{display:flex;align-items:center;gap:calc(30 * var(--u))}
-.lang{
-  display:inline-flex;align-items:center;gap:calc(9 * var(--u));
-  color:rgba(255,255,255,.9);
-  white-space:nowrap;
-}
-.lang svg{width:calc(20 * var(--u));height:calc(20 * var(--u));flex:none}
-.btn{
-  height:calc(44 * var(--u));
-  padding:0 calc(27 * var(--u));
-  display:inline-flex;align-items:center;justify-content:center;
-  border-radius:999px;
-  background:var(--btn);
-  color:var(--ink);
-  font-weight:600;
-  white-space:nowrap;
-  transition:transform .25s ease, background-color .25s ease;
-}
-.btn:hover{transform:translateY(-1px);background:var(--btn-hover)}
-.nav a:focus-visible{outline:2px solid #fff;outline-offset:2px}
-
-/* ---------- opening + doors ---------- */
 .opening{position:absolute;inset:0;z-index:6;background:var(--bg)}
-.opening > img,.opening > video{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;display:block;
-}
+.opening > img,.opening > video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .opening > video{opacity:0}
 .doors{position:absolute;inset:0;z-index:7;overflow:hidden}
 .door{
@@ -208,68 +104,36 @@ a{color:inherit;text-decoration:none}
 }
 .door--l{left:0;background-position:0 50%}
 .door--r{right:0;background-position:100% 50%}
-.opening[hidden],.doors[hidden]{display:none}
+html:not(.intro) .opening,html:not(.intro) .doors,.opening[hidden],.doors[hidden]{display:none}
 
-/* ---------- intro start states ---------- */
-.hero.intro .nav{opacity:0;transform:translateY(-6px)}
-.hero.intro .word .l,.hero.intro .kicker{opacity:0}
-.hero.intro .front{transform:translateY(66%)}
-.hero.intro .shade{opacity:0}
-
-/* ---------- small screens ---------- */
-@media (max-width:819.98px){
-  :root{--u:1px}
-  .nav{
-    top:16px;height:auto;
-    padding:0 18px;
-    flex-wrap:wrap;
-    row-gap:12px;
-  }
-  .brand{font-size:14px;letter-spacing:.22em}
-  .lang{font-size:13px}
-  .lang svg{width:16px;height:16px}
-  .btn{height:36px;padding:0 16px;font-size:13px}
-  .pills{
-    position:static;transform:none;
-    order:3;
-    width:100%;
-    height:40px;
-    padding:4px;
-    gap:4px;
-  }
-  .pills a{flex:1 1 auto;height:32px;font-size:12px;padding:0 10px}
-}
-@media (max-width:360px){
-  .pills a{font-size:11px;padding:0 6px}
-}
-@media (max-height:500px) and (orientation:landscape){
-  :root{--u:1px}
-  .nav{
-    top:12px;height:34px;
-    padding:0 24px;
-    flex-wrap:nowrap;
-    font-size:12px;
-  }
-  .brand{font-size:13px;letter-spacing:.24em}
-  .lang{font-size:12px}
-  .lang svg{width:16px;height:16px}
-  .btn{height:32px;padding:0 16px;font-size:12px}
-  .nav__right{gap:18px}
-  .pills{
-    position:absolute;left:50%;top:0;transform:translateX(-50%);
-    width:auto;height:34px;padding:3px;gap:4px;
-  }
-  .pills a{flex:none;height:28px;font-size:12px;padding:0 13px}
-}
-
-@media (prefers-reduced-motion:reduce){
-  .rain{transition:none}
-}
+/* intro start states */
+html.intro .nav{opacity:0;transform:translateY(-6px)}
+html.intro .word .l,html.intro .kicker{opacity:0}
+html.intro .front{transform:translateY(66%)}
+html.intro .shade{opacity:0}
 </style>
+<script src="js/site.js?v=1" defer></script>
 </head>
 <body>
-<section class="hero intro" id="hero" aria-label="Harborlux — Claim Your Summit">
-
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav" id="nav">
+  <a class="brand" href="index.html" aria-label="Doorgesh, home">DOORGESH</a>
+  <nav class="pills" aria-label="Main">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="work.html">Builds</a>
+    <a href="sound.html">Sound</a>
+    <a href="about.html">About</a>
+  </nav>
+  <div class="nav__right">
+    <span class="lang">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c-3.2 3-3.2 15 0 18M12 3c3.2 3 3.2 15 0 18"/></svg>
+      Eng
+    </span>
+    <a class="btn" href="contact.html">Say hi</a>
+  </div>
+</header>
+<main id="main">
+<section class="hero" id="hero" aria-label="Doorgesh — Claim Your Summit">
   <div class="stage" id="stage">
     <div class="layer back" id="back">
       <img id="imgBack" alt="" decoding="async">
@@ -277,50 +141,137 @@ a{color:inherit;text-decoration:none}
       <video class="rain" id="rainB" muted playsinline preload="auto" aria-hidden="true"></video>
       <div class="shade" id="shade"></div>
     </div>
-
     <div class="headline" id="headline">
       <p class="kicker" id="kicker" aria-hidden="true">Claim Your</p>
       <h1 class="word" id="word" aria-label="Claim Your Summit"><span class="w" id="wordInner" aria-hidden="true"><span class="l">S</span><span class="l">u</span><span class="l">m</span><span class="l">m</span><span class="l">i</span><span class="l">t</span><i class="bl" id="baseline"></i></span></h1>
     </div>
-
     <div class="layer mid" id="mid">
       <img id="imgMid" alt="" decoding="async">
     </div>
-
     <div class="layer front" id="front">
       <div class="glass" aria-hidden="true"></div>
       <img id="imgFront" alt="A man in a long dark coat stands at a glass balcony railing, looking out over a rainy neon harbour at night" decoding="async">
     </div>
   </div>
-
-  <header class="nav" id="nav">
-    <a class="brand" href="./">HARBORLUX</a>
-    <nav class="pills" aria-label="Main">
-      <a href="./" aria-current="page">Home</a>
-      <a href="#the-firm">The Firm</a>
-      <a href="#skyline-homes">Skyline Homes</a>
-      <a href="#talk-to-us">Talk To Us</a>
-    </nav>
-    <div class="nav__right">
-      <span class="lang">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c-3.2 3-3.2 15 0 18M12 3c3.2 3 3.2 15 0 18"/></svg>
-        Eng
-      </span>
-      <a class="btn" href="#talk-to-us">Enquire</a>
-    </div>
-  </header>
-
   <div class="opening" id="opening" aria-hidden="true">
     <img id="imgAerial" alt="" decoding="async">
     <video id="tilt" muted playsinline preload="auto"></video>
   </div>
-
   <div class="doors" id="doors" aria-hidden="true">
     <div class="door door--l" id="doorL"></div>
     <div class="door door--r" id="doorR"></div>
   </div>
 </section>
 
+<section class="sec" aria-labelledby="me-title">
+  <div class="glow glow--a" aria-hidden="true"></div>
+  <div class="wrap me">
+    <figure class="frame me__photo" data-reveal><img src="assets/img/doorgesh-4-sunset.webp" srcset="assets/img/doorgesh-4-sunset.webp 1x, assets/img/doorgesh-4-sunset-hd.webp 2x" alt="Doorgesh flexing, mirror selfie in sunset colours" loading="lazy" decoding="async" style="object-position:45% 35%"></figure>
+    <div class="me__text">
+      <p class="eyebrow" data-reveal>Hey</p>
+      <h2 id="me-title" class="h2" data-reveal="2">I'm <span class="hl">Doorgesh.</span></h2>
+      <p class="lede" data-reveal="3">Better known online as Zenn Prxd. I build high-voltage experiments, custom audio systems and camera-powered gadgets, then write the code and make the content around them.</p>
+      <p class="muted" data-reveal="3">Drummer and leader of a school band, first place at the RGSC Science Quest 2026, and always in the middle of a new build.</p>
+      <ul class="facts" data-reveal="4">
+        <li><span>Based in</span>Mauritius</li>
+        <li><span>Plays</span>Drums</li>
+        <li><span>Won</span>Science Quest 2026</li>
+      </ul>
+      <div class="btns" data-reveal="4"><a class="btn btn--ghost" href="about.html">More about me <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--tight" aria-labelledby="built-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="eyebrow" data-reveal>Things I've built</p><h2 id="built-title" class="h2" data-reveal="2">Made with <span class="hl">my hands.</span></h2></div>
+      <p class="lede" data-reveal="3">Everything here I wired, coded and tested myself.</p>
+    </div>
+    <div class="tiles">
+      <a class="tile" href="work.html" data-reveal><img src="assets/img/mood/ionic.webp" srcset="assets/img/mood/ionic.webp 1400w, assets/img/mood/ionic-hd.webp 2400w" sizes="(max-width:900px) 100vw, 60vw" alt="" loading="lazy" decoding="async"><span class="tile__go"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></span><span class="tile__k">01 · Physics</span><span class="tile__t">The Ionic Engine</span><span class="tile__d">Air pushed by electricity alone. First place, Science Quest 2026.</span></a>
+      <a class="tile" href="work.html" data-reveal="2"><img src="assets/img/real/tb21.webp" srcset="assets/img/real/tb21.webp 1x, assets/img/real/tb21-hd.webp 2x" alt="" loading="lazy" decoding="async"><span class="tile__go"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></span><span class="tile__k">02 · Audio</span><span class="tile__t">Amp &amp; sub systems</span><span class="tile__d">Class-D amp boards in boxes I built and tuned myself.</span></a>
+      <a class="tile" href="work.html" data-reveal><img src="assets/img/mood/sim.webp" srcset="assets/img/mood/sim.webp 1400w, assets/img/mood/sim-hd.webp 2400w" sizes="(max-width:900px) 100vw, 60vw" alt="" loading="lazy" decoding="async"><span class="tile__go"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></span><span class="tile__k">03 · Sim rig</span><span class="tile__t">EuroSim wheel</span><span class="tile__d">A force-feedback wheel and shifter for Euro Truck Simulator 2.</span></a>
+      <a class="tile" href="work.html" data-reveal="2"><img src="assets/video/real/wiring.jpg" alt="" loading="lazy" decoding="async"><span class="tile__go"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></span><span class="tile__k">04 · Vision</span><span class="tile__t">AI sorting bin</span><span class="tile__d">An ESP32-CAM bin that sees what you drop in and sorts it.</span></a>
+    </div>
+    <div class="more"><a class="btn btn--ghost" href="work.html">All my builds <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="reel-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><p class="eyebrow" data-reveal>Real footage</p><h2 id="reel-title" class="h2" data-reveal="2">Caught <span class="hl">on camera.</span></h2></div>
+      <p class="lede" data-reveal="3">Straight off my phone: the bench, the garage and the nights out.</p>
+    </div>
+  </div>
+  <div class="reel" data-reveal>
+    <figure class="clip"><div class="frame"><video muted loop playsinline preload="none" poster="assets/video/real/solder.jpg" data-src="assets/video/real/solder.mp4" aria-label="Doorgesh soldering a board at his desk"></video></div><figcaption><span>01</span>On the iron</figcaption></figure>
+    <figure class="clip"><div class="frame"><video muted loop playsinline preload="none" poster="assets/video/real/ee111.jpg" data-src="assets/video/real/ee111.mp4" aria-label="A Corolla EE111 under garage lights, headlights cycling colours"></video></div><figcaption><span>02</span>The EE111</figcaption></figure>
+    <figure class="clip"><div class="frame"><video muted loop playsinline preload="none" poster="assets/video/real/bike.jpg" data-src="assets/video/real/bike.mp4" aria-label="Close-ups of the wrapped Raleigh bicycle with purple spokes"></video></div><figcaption><span>03</span>The Raleigh</figcaption></figure>
+    <figure class="clip"><div class="frame"><video muted loop playsinline preload="none" poster="assets/video/real/leds.jpg" data-src="assets/video/real/leds.mp4" aria-label="An Arduino and breadboard with LEDs flashing"></video></div><figcaption><span>04</span>LEDs on the beat</figcaption></figure>
+    <figure class="clip"><div class="frame"><video muted loop playsinline preload="none" poster="assets/video/real/school.jpg" data-src="assets/video/real/school.mp4" aria-label="A school party under coloured lights"></video></div><figcaption><span>05</span>School nights</figcaption></figure>
+  </div>
+</section>
+
+<section class="sec band" aria-labelledby="music-title">
+  <div class="band__bg" aria-hidden="true"><img src="assets/img/mood/drums-violet.webp" srcset="assets/img/mood/drums-violet.webp 1400w, assets/img/mood/drums-violet-hd.webp 2400w" sizes="(max-width:900px) 100vw, 60vw" alt="" loading="lazy" decoding="async"></div>
+  <div class="wrap music">
+    <div>
+      <p class="eyebrow" data-reveal>Zenn Prxd</p>
+      <h2 id="music-title" class="h2" data-reveal="2">I make <span class="hl">noise.</span></h2>
+      <p class="lede" data-reveal="3">Drums in a school band, DSP remasters and visualisers on YouTube, and amps that shake the room.</p>
+      <div class="btns" data-reveal="4"><a class="btn" href="sound.html">Play my drum kit <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+    </div>
+    <dl class="nums" data-reveal="3">
+      <div class="num"><dd><b><span data-count="200">200</span>K+</b></dd><dt><span>YouTube views</span></dt></div>
+      <div class="num"><dd><b><span data-count="1">1</span>K+</b></dd><dt><span>Subscribers</span></dt></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" aria-labelledby="sq-title">
+  <div class="glow glow--b" aria-hidden="true"></div>
+  <div class="wrap sq">
+    <div>
+      <p class="eyebrow" data-reveal>Side quest</p>
+      <h2 id="sq-title" class="h3" data-reveal="2">I also make <span class="hl">websites.</span></h2>
+      <p class="lede" data-reveal="3" style="margin-top:20px">Live sites I've designed and coded, from a car dealer with a 3D showroom to a hotel booking system.</p>
+      <div class="btns" data-reveal="4"><a class="btn btn--ghost" href="web.html">See them <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+    </div>
+    <div class="sq__shots" data-reveal="2">
+      <img src="assets/img/sites/v8motors.webp" srcset="assets/img/sites/v8motors.webp 1x, assets/img/sites/v8motors-hd.webp 2x" alt="V8 Motors website" loading="lazy" decoding="async">
+      <img src="assets/img/sites/edenvilla.webp" srcset="assets/img/sites/edenvilla.webp 1x, assets/img/sites/edenvilla-hd.webp 2x" alt="Eden Villa website" loading="lazy" decoding="async">
+      <img src="assets/img/sites/signtuning.webp" srcset="assets/img/sites/signtuning.webp 1x, assets/img/sites/signtuning-hd.webp 2x" alt="SIGNTUNING website" loading="lazy" decoding="async">
+    </div>
+  </div>
+</section>
+
+<section class="cta" aria-label="Contact">
+  <div class="cta__bg" data-rain="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20261117_063703_04e54df7-2236-4dff-b95b-a9a34c1f78ec.mp4" aria-hidden="true">
+    <img src="https://images.higgs.ai/?default=1&amp;output=webp&amp;url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20261117_063251_24fbd7cc-00df-49ec-8fbf-d8a0349b1e98.png&amp;w=2000&amp;q=85" alt="" loading="lazy" decoding="async">
+    <video muted playsinline preload="none"></video>
+    <video muted playsinline preload="none"></video>
+  </div>
+  <div class="wrap">
+    <p class="kick" data-reveal>Let's talk</p>
+    <h2 class="h1" data-reveal="2">Say hi.</h2>
+    <p class="lede" data-reveal="3">A collab, a build, a jam or just a hello. My inbox is open.</p>
+    <div class="btns" data-reveal="4"><a class="btn" href="contact.html">Get in touch <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+  </div>
+</section>
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot__word" aria-hidden="true">DOORGESH</p>
+    <div class="foot__row">
+      <div><p>© 2026 Doorgesh · Zenn Prxd · Mauritius</p><p class="foot__warn">High-voltage experiments are dangerous. Don't try them without proper training and supervision.</p></div>
+      <nav class="foot__nav" aria-label="Footer"><a href="index.html">Home</a><a href="work.html">Builds</a><a href="sound.html">Sound</a><a href="about.html">About</a><a href="web.html">Websites</a><a href="contact.html">Contact</a></nav>
+      <div class="foot__nav"><a href="https://www.youtube.com/results?search_query=Zenn+Prxd" target="_blank" rel="noopener">YouTube ↗</a><a href="https://www.tiktok.com/@r0shibhadain" target="_blank" rel="noopener">TikTok ↗</a><a href="https://webluxe.github.io/WebLuxe/" target="_blank" rel="noopener">WebLuxe ↗</a></div>
+    </div>
+    <p class="foot__credits">Mood photos from <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>: Galina Bogdanova, Hoyoun Lee, ANOOF C, Hamed Taha, Zishan Khan, Luciano Donoso, Chris Becker, Erik Mclean, Vitalii Khodzinskyi, Magnus Lunay. Harbour scenes and rain films made for this site.</p>
+  </div>
+</footer>
 <script>
 (function () {
   "use strict";
@@ -348,6 +299,7 @@ a{color:inherit;text-decoration:none}
 
   /* ---------- elements ---------- */
   var $ = function (id) { return document.getElementById(id); };
+  var root = document.documentElement;
   var hero = $("hero"), stage = $("stage"), back = $("back"), mid = $("mid"), front = $("front");
   var headline = $("headline"), word = $("word"), wordInner = $("wordInner"), baseline = $("baseline");
   var kicker = $("kicker"), nav = $("nav"), shade = $("shade");
@@ -356,24 +308,17 @@ a{color:inherit;text-decoration:none}
   var letters = Array.prototype.slice.call(word.querySelectorAll(".l"));
 
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var playIntro = root.classList.contains("intro");
 
   /* ---------- layout ---------- */
-  var wpe = 3.4;      // word width per em (measured)
-  var blr = 0.8633;   // baseline offset from top of h1, in em (measured)
-
+  var wpe = 3.4, blr = 0.8633;
   function measure() {
     var prev = word.style.fontSize;
     word.style.fontSize = "100px";
-    var wr = wordInner.getBoundingClientRect();
-    var hr = word.getBoundingClientRect();
-    var br = baseline.getBoundingClientRect();
-    if (wr.width > 0) {
-      wpe = wr.width / 100;
-      blr = (br.bottom - hr.top) / 100;
-    }
+    var wr = wordInner.getBoundingClientRect(), hr = word.getBoundingClientRect(), br = baseline.getBoundingClientRect();
+    if (wr.width > 0) { wpe = wr.width / 100; blr = (br.bottom - hr.top) / 100; }
     word.style.fontSize = prev;
   }
-
   function layout() {
     var vw = hero.clientWidth, vh = hero.clientHeight;
     var sw = Math.max(vw, vh * 16 / 9), sh = sw * 9 / 16;
@@ -383,14 +328,13 @@ a{color:inherit;text-decoration:none}
     stage.style.height = sh + "px";
     stage.style.left = sl + "px";
     stage.style.top = st + "px";
-
     headline.style.left = (-sl) + "px";
     headline.style.width = vw + "px";
 
     var portrait = vh > 1.2 * vw;
-    var bStage = sh * (portrait ? 0.362 : 0.43);   // baseline, stage coords
-    var bView = st + bStage;                         // baseline, viewport coords
-    var navBottom = nav.offsetTop + nav.offsetHeight;
+    var bStage = sh * (portrait ? 0.362 : 0.43);
+    var bView = st + bStage;
+    var navBottom = (parseFloat(getComputedStyle(nav).top) || 0) + nav.offsetHeight;
 
     var a = (0.625 * sw) / wpe;
     var b = (0.92 * vw) / wpe;
@@ -402,35 +346,22 @@ a{color:inherit;text-decoration:none}
     kicker.style.fontSize = (0.118 * F) + "px";
     kicker.style.top = (bStage - (0.727 + 0.02) * F) + "px";
   }
-
   var rz = 0;
-  window.addEventListener("resize", function () {
-    cancelAnimationFrame(rz);
-    rz = requestAnimationFrame(layout);
-  });
+  window.addEventListener("resize", function () { cancelAnimationFrame(rz); rz = requestAnimationFrame(layout); });
   layout();
   if (document.fonts && document.fonts.load) {
-    document.fonts.load('700 100px "Inter"', "Summit").then(function () {
-      measure(); layout();
-    }, function () {});
+    document.fonts.load('700 100px "Inter"', "Summit").then(function () { measure(); layout(); }, function () {});
     document.fonts.ready.then(function () { measure(); layout(); });
-  } else {
-    measure(); layout();
-  }
+  } else { measure(); layout(); }
 
-  /* ---------- load images (sized to the screen) ---------- */
-  var sw0 = Math.max(hero.clientWidth, hero.clientHeight * 16 / 9);
-  var wStage = pickW(sw0), wHero = pickW(hero.clientWidth);
-
+  /* ---------- images, sized to the screen ---------- */
+  var wStage = pickW(Math.max(hero.clientWidth, hero.clientHeight * 16 / 9)), wHero = pickW(hero.clientWidth);
   function loadImg(el, src) {
     return new Promise(function (res) {
       var done = function () { res(); };
-      el.onload = function () {
-        if (el.decode) el.decode().then(done, done); else done();
-      };
+      el.onload = function () { if (el.decode) el.decode().then(done, done); else done(); };
       el.onerror = done;
       el.src = src;
-      if (el.complete && el.naturalWidth) el.onload();
     });
   }
   function loadBg(el, src) {
@@ -442,70 +373,68 @@ a{color:inherit;text-decoration:none}
       i.src = src;
     });
   }
+  var backReady = loadImg($("imgBack"), img(IDS.back, wStage));
+  var imgReady = [backReady, loadImg($("imgMid"), img(IDS.mid, wStage)), loadImg($("imgFront"), img(IDS.front, wStage))];
 
-  var imgReady = [
-    loadImg($("imgBack"), img(IDS.back, wStage)),
-    loadImg($("imgMid"), img(IDS.mid, wStage)),
-    loadImg($("imgFront"), img(IDS.front, wStage))
-  ];
+  /* ---------- rain loop ---------- */
+  var RAIN = [rainA, rainB], LOOP = 3.6, LEAD = 0.75, activeRain = -1, rainStarted = false, heroVisible = true;
+  function safePlay(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+  function rainOn(i) { var v = RAIN[i]; try { v.currentTime = 0; } catch (e) {} safePlay(v); v.classList.add("on"); }
+  RAIN.forEach(function (v, i) {
+    v.addEventListener("timeupdate", function () {
+      if (i !== activeRain || !heroVisible) return;
+      if (v.currentTime >= LOOP - LEAD) {
+        var n = 1 - i; activeRain = n; rainOn(n); v.classList.remove("on");
+        setTimeout(function () { if (activeRain !== i) v.pause(); }, 800);
+      }
+    });
+  });
+  function loadRain() { if (rainA.getAttribute("src")) return; rainA.src = RAIN_SRC; rainB.src = RAIN_SRC; rainA.load(); rainB.load(); }
+  function startRain() { if (rainStarted) return; rainStarted = true; loadRain(); activeRain = 0; rainOn(0); }
+  function resumeRain() { if (rainStarted && activeRain >= 0 && heroVisible && !document.hidden) { var v = RAIN[activeRain]; if (v.paused) safePlay(v); } }
+  document.addEventListener("visibilitychange", resumeRain);
+  // pause the rain while the hero is scrolled out of view
+  if ("IntersectionObserver" in window) new IntersectionObserver(function (es) {
+    heroVisible = es[0].isIntersecting;
+    if (!rainStarted) return;
+    if (heroVisible) resumeRain(); else RAIN.forEach(function (v) { v.pause(); });
+  }).observe(hero);
 
   /* ---------- reduced motion: final frame, nothing plays ---------- */
-  if (reduce) {
-    hero.classList.remove("intro");
-    opening.hidden = true;
-    doors.hidden = true;
-    return;
-  }
+  if (reduce) { root.classList.remove("intro"); return; }
 
+  /* ---------- already seen this session: final frame + live rain ---------- */
+  if (!playIntro) { backReady.then(startRain); return; }
+
+  /* ---------- the intro ---------- */
+  try { window.scrollTo(0, 0); } catch (e) {}
   imgReady.push(loadImg($("imgAerial"), img(IDS.aerial, wStage)));
-  imgReady.push(loadBg(doorL, img(IDS.doors, wHero)).then(function () {
-    doorR.style.backgroundImage = doorL.style.backgroundImage;
-  }));
-
+  imgReady.push(loadBg(doorL, img(IDS.doors, wHero)).then(function () { doorR.style.backgroundImage = doorL.style.backgroundImage; }));
   var tiltReady = new Promise(function (res) {
     var done = function () { res(); };
     tilt.addEventListener("canplaythrough", done, { once: true });
     tilt.addEventListener("error", done, { once: true });
-    tilt.src = TILT_SRC;
-    tilt.load();
+    tilt.src = TILT_SRC; tilt.load();
   });
 
-  /* ---------- timeline ---------- */
-  var D = 7400;
-  var anims = [];
+  var D = 7400, anims = [];
   var E = {
-    door1: "cubic-bezier(.1,.2,.8,1)",
-    door2: "cubic-bezier(.4,.6,.9,1)",
-    io: "ease-in-out",
-    open: "cubic-bezier(.45,0,.55,1)",
-    rise: "cubic-bezier(.2,.65,.3,1)",
-    back: "cubic-bezier(.45,0,.35,1)",
-    mid1: "cubic-bezier(.45,0,.3,1)",
-    mid2: "cubic-bezier(.45,0,.55,1)",
-    head: "cubic-bezier(.3,0,.4,1)",
-    man1: "cubic-bezier(.2,.5,.2,1)",
-    man2: "cubic-bezier(.45,0,.55,1)"
+    door1: "cubic-bezier(.1,.2,.8,1)", door2: "cubic-bezier(.4,.6,.9,1)", io: "ease-in-out",
+    open: "cubic-bezier(.45,0,.55,1)", rise: "cubic-bezier(.2,.65,.3,1)", back: "cubic-bezier(.45,0,.35,1)",
+    mid1: "cubic-bezier(.45,0,.3,1)", mid2: "cubic-bezier(.45,0,.55,1)", head: "cubic-bezier(.3,0,.4,1)",
+    man1: "cubic-bezier(.2,.5,.2,1)", man2: "cubic-bezier(.45,0,.55,1)"
   };
-
-  // points: [timeSeconds, props, easingToNext]
   function track(el, points) {
-    var kf = [];
-    var first = points[0], last = points[points.length - 1];
+    var kf = [], first = points[0], last = points[points.length - 1];
     if (first[0] > 0) kf.push(Object.assign({ offset: 0, easing: "linear" }, first[1]));
     points.forEach(function (p) {
-      var o = Math.min(1, (p[0] * 1000) / D);
-      var k = Object.assign({ offset: o }, p[1]);
-      k.easing = p[2] || "linear";
-      kf.push(k);
+      var k = Object.assign({ offset: Math.min(1, (p[0] * 1000) / D) }, p[1]);
+      k.easing = p[2] || "linear"; kf.push(k);
     });
     if (last[0] * 1000 < D) kf.push(Object.assign({ offset: 1 }, last[1]));
     var a = el.animate(kf, { duration: D, fill: "both" });
-    a.pause();
-    a.currentTime = 0;
-    anims.push(a);
-    return a;
+    a.pause(); a.currentTime = 0; anims.push(a);
   }
-
   track(doorL, [[0.02, { transform: "translateX(0)" }, E.door1], [1.13, { transform: "translateX(-101%)" }]]);
   track(doorR, [[0.02, { transform: "translateX(0)" }, E.door2], [1.24, { transform: "translateX(101%)" }]]);
   track(tilt, [[1.19, { opacity: 0 }, E.io], [1.47, { opacity: 1 }]]);
@@ -518,92 +447,30 @@ a{color:inherit;text-decoration:none}
   });
   track(shade, [[2.90, { opacity: 0 }, E.io], [3.70, { opacity: 1 }]]);
   track(back, [[2.90, { transform: "translateY(0)" }, E.back], [4.30, { transform: "translateY(-1.5%)" }]]);
-  track(mid, [
-    [2.90, { transform: "translateY(0)" }, E.mid1],
-    [4.30, { transform: "translateY(-4%)" }],
-    [4.60, { transform: "translateY(-4%)" }, E.mid2],
-    [6.90, { transform: "translateY(0)" }]
-  ]);
+  track(mid, [[2.90, { transform: "translateY(0)" }, E.mid1], [4.30, { transform: "translateY(-4%)" }], [4.60, { transform: "translateY(-4%)" }, E.mid2], [6.90, { transform: "translateY(0)" }]]);
   track(headline, [[3.00, { transform: "translateY(6%)" }, E.head], [4.80, { transform: "translateY(0)" }]]);
-  track(front, [
-    [3.35, { transform: "translateY(66%)" }, E.man1],
-    [6.00, { transform: "translateY(-2.5%)" }, E.man2],
-    [7.30, { transform: "translateY(0)" }]
-  ]);
+  track(front, [[3.35, { transform: "translateY(66%)" }, E.man1], [6.00, { transform: "translateY(-2.5%)" }, E.man2], [7.30, { transform: "translateY(0)" }]]);
 
-  /* ---------- rain loop ---------- */
-  var RAIN = [rainA, rainB], LOOP = 3.6, LEAD = 0.75, activeRain = -1, rainStarted = false;
-  function rainOn(i) {
-    var v = RAIN[i];
-    try { v.currentTime = 0; } catch (e) {}
-    var p = v.play(); if (p && p.catch) p.catch(function () {});
-    v.classList.add("on");
-  }
-  RAIN.forEach(function (v, i) {
-    v.addEventListener("timeupdate", function () {
-      if (i !== activeRain) return;
-      if (v.currentTime >= LOOP - LEAD) {
-        var n = 1 - i;
-        activeRain = n;
-        rainOn(n);
-        v.classList.remove("on");
-        setTimeout(function () { if (activeRain !== i) v.pause(); }, 800);
-      }
-    });
-  });
-  function loadRain() {
-    if (rainA.src) return;
-    rainA.src = RAIN_SRC; rainB.src = RAIN_SRC;
-    rainA.load(); rainB.load();
-  }
-  function startRain() {
-    if (rainStarted) return;
-    rainStarted = true;
-    loadRain();
-    activeRain = 0;
-    rainOn(0);
-  }
-  document.addEventListener("visibilitychange", function () {
-    if (!document.hidden && rainStarted && activeRain >= 0) {
-      var v = RAIN[activeRain];
-      if (v.paused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
-    }
-  });
-
-  /* ---------- tilt video sync ---------- */
   var T0 = 1.25, T1 = 2.85, WIN = T1 - T0, tiltDone = false, tiltStarted = false;
   function syncTilt(t) {
     if (tiltDone) return;
-    var dur = (isFinite(tilt.duration) && tilt.duration > 0) ? tilt.duration : 5.04;
-    var base = dur / WIN;
-    if (t >= T1) {
-      tiltDone = true;
-      tilt.pause();
-      try { tilt.currentTime = Math.max(0, dur - 0.03); } catch (e) {}
-      return;
-    }
+    var dur = (isFinite(tilt.duration) && tilt.duration > 0) ? tilt.duration : 5.04, base = dur / WIN;
+    if (t >= T1) { tiltDone = true; tilt.pause(); try { tilt.currentTime = Math.max(0, dur - 0.03); } catch (e) {} return; }
     if (t < T0) return;
-    if (!tiltStarted) {
-      tiltStarted = true;
-      tilt.playbackRate = base;
-      var p = tilt.play(); if (p && p.catch) p.catch(function () {});
-    }
-    var target = ((t - T0) / WIN) * dur;
-    var diff = target - tilt.currentTime;
-    var r = base * (1 + diff * 1.5);
-    r = Math.max(0.85 * base, Math.min(1.2 * base, r));
+    if (!tiltStarted) { tiltStarted = true; tilt.playbackRate = base; safePlay(tilt); }
+    var target = ((t - T0) / WIN) * dur, diff = target - tilt.currentTime;
+    var r = Math.max(0.85 * base, Math.min(1.2 * base, base * (1 + diff * 1.5)));
     if (Math.abs(r - tilt.playbackRate) > 0.01 * base) tilt.playbackRate = r;
   }
 
-  /* ---------- master clock ---------- */
   var started = false, t0 = 0;
   function finish() {
     anims.forEach(function (a) { a.currentTime = D; });
-    hero.classList.remove("intro");
+    root.classList.remove("intro");
     anims.forEach(function (a) { a.cancel(); });
-    opening.hidden = true;
-    doors.hidden = true;
-    tilt.pause();
+    opening.hidden = true; doors.hidden = true;
+    tilt.pause(); tilt.removeAttribute("src");
+    try { sessionStorage.setItem("dg-seen", "1"); } catch (e) {}
   }
   function frame(now) {
     var ms = Math.min(now - t0, D);
@@ -619,7 +486,6 @@ a{color:inherit;text-decoration:none}
     started = true;
     requestAnimationFrame(function (now) { t0 = now; frame(now); });
   }
-
   var failsafe = setTimeout(start, 5000);
   Promise.all(imgReady.concat([tiltReady])).then(function () {
     loadRain();
