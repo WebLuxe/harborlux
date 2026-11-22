@@ -1,0 +1,106 @@
+/* =========================================================
+   SCREENS + MOTION: every section is one screen, snap scrolling,
+   word-by-word headings, image wipes, progress line, scroll cue.
+   ========================================================= */
+:root{--navh:calc(100 * var(--u) + 26px)}
+@media (max-width:819.98px){:root{--navh:122px}}
+@media (max-height:500px) and (orientation:landscape){:root{--navh:56px}}
+
+/* snap: the page never free-scrolls; one gesture = one screen */
+html.snap,html.snap body{touch-action:pinch-zoom}
+html.snap .reel{touch-action:pan-x pinch-zoom}
+html.snap .modal{touch-action:pan-y pinch-zoom}
+
+/* ---------- one screen per section ---------- */
+.sec{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--navh) + 2svh) 0 max(4svh,28px)}
+.sec > .wrap{width:100%}
+.sec-head{margin-bottom:clamp(22px,4svh,56px)}
+.sec-head .lede{max-width:36ch}
+.sec-head__side{display:grid;justify-items:start;gap:18px}
+.phead{min-height:100vh;min-height:100svh;padding:calc(var(--navh) + 40px) 0 clamp(40px,9svh,110px)}
+.cta{min-height:100vh;min-height:100svh}
+.h1{font-size:clamp(54px,min(11vw,19svh),176px)}
+.h2{font-size:clamp(40px,min(7vw,12.5svh),112px)}
+.h3{font-size:clamp(32px,min(4.2vw,8svh),64px)}
+.lede{font-size:clamp(17px,min(1.55vw,2.6svh),22px)}
+
+/* home */
+.me__photo{max-height:min(72svh,700px)}
+.tiles{grid-auto-rows:clamp(190px,calc((100svh - var(--navh) - 300px) / 2),460px)}
+.tile{min-height:0}
+.reel{--ch:clamp(240px,calc(100svh - var(--navh) - 300px),560px);grid-auto-columns:calc(var(--ch) * .643)}
+.clip .frame{aspect-ratio:auto;height:var(--ch)}
+.sq__shots{max-height:62svh;max-width:calc(62svh * 1.45);justify-self:end;width:100%}
+
+/* builds */
+.pcard{min-height:clamp(250px,calc((100svh - var(--navh) - 90px) / 2),470px)}
+.gcard{padding:clamp(20px,min(2.4vw,3.6svh),34px)}
+.gcard ul li{padding:min(10px,1.2svh) 0}
+
+/* sound */
+.split .frame{aspect-ratio:auto;height:clamp(170px,34svh,420px);margin-top:clamp(16px,3svh,30px)}
+.big{font-size:clamp(80px,min(14vw,22svh),210px)}
+.pad{aspect-ratio:auto;height:clamp(96px,min(13vw,21svh),200px)}
+
+/* about */
+.about .h1{font-size:clamp(52px,min(9vw,15svh),150px)}
+.deck__cards{width:min(400px,78vw,calc((100svh - var(--navh) - 210px) * .8))}
+
+/* websites: one site per screen */
+.sec--sites{padding:0}
+.sites{gap:0}
+.site{min-height:100vh;min-height:100svh;padding:calc(var(--navh) + 2svh) 0 4svh}
+.site__shot{width:100%;max-width:calc(64svh * 1.6)}
+
+/* contact */
+.links a{padding-top:min(22px,2.4svh);padding-bottom:min(22px,2.4svh)}
+.form{gap:min(18px,2svh)}
+
+@media (max-width:700px){
+  .tiles{grid-auto-rows:auto}
+  .tile,.tile:nth-child(n){min-height:300px}
+  .sq__shots{justify-self:stretch;max-width:none}
+  .pad{height:auto;aspect-ratio:1}
+}
+
+/* ---------- headings rise word by word ---------- */
+.wd{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .05em .16em;margin:0 -.05em -.16em}
+.wi{display:inline-block;transform:translateY(112%) rotate(5deg);transform-origin:0 100%;transition:transform 1.15s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i,0) * 60ms + var(--d,0ms))}
+.in .wi{transform:none}
+.js [data-reveal].sh{opacity:1;transform:none}
+.hl.sh-hl{background:none}
+.hl .wi{background:var(--accent);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- images wipe open and settle ---------- */
+.js .tile[data-reveal],.js .frame[data-reveal],.js .pcard[data-reveal],.js .site__shot[data-reveal],.js .sq__shots[data-reveal],.js .reel[data-reveal] .frame{
+  opacity:1;transform:none;
+  clip-path:inset(0 0 0 0 round var(--rr,28px));
+  transition:clip-path 1.3s cubic-bezier(.77,0,.18,1);
+}
+.js .site__shot[data-reveal],.js .sq__shots[data-reveal]{--rr:20px}
+.js .tile[data-reveal]:not(.in),.js .frame[data-reveal]:not(.in),.js .pcard[data-reveal]:not(.in),.js .site__shot[data-reveal]:not(.in),.js .sq__shots[data-reveal]:not(.in),.js .reel[data-reveal]:not(.in) .frame{clip-path:inset(100% 0 0 0 round var(--rr,28px))}
+.js .reel[data-reveal]{opacity:1;transform:none}
+.js .reel[data-reveal] .clip:nth-child(2) .frame{transition-delay:.08s}
+.js .reel[data-reveal] .clip:nth-child(3) .frame{transition-delay:.16s}
+.js .reel[data-reveal] .clip:nth-child(4) .frame{transition-delay:.24s}
+.js .reel[data-reveal] .clip:nth-child(5) .frame{transition-delay:.32s}
+.js [data-reveal] img,.js [data-reveal] video{transition:transform 1.9s cubic-bezier(.16,1,.3,1),filter .35s}
+.js .tile[data-reveal]:not(.in) img,.js .frame[data-reveal]:not(.in) img,.js .frame[data-reveal]:not(.in) video,.js .pcard[data-reveal]:not(.in) img,.js .pcard[data-reveal]:not(.in) video,.js .site__shot[data-reveal]:not(.in) img,.js .reel[data-reveal]:not(.in) video{transform:scale(1.22)}
+.js .tile[data-reveal]:not(.in) > span,.js .pcard[data-reveal]:not(.in) .pcard__body,.js .pcard[data-reveal]:not(.in) .pcard__plus{opacity:0;transform:translateY(18px)}
+.tile > span,.pcard__body{transition:opacity .8s ease .45s,transform 1s cubic-bezier(.16,1,.3,1) .45s}
+
+/* ---------- progress line + scroll cue ---------- */
+.pg{position:fixed;right:0;top:0;bottom:0;width:3px;z-index:60;pointer-events:none;background:rgba(255,255,255,.06);transition:opacity .6s}
+.pg i{display:block;height:100%;background:linear-gradient(180deg,#F7C9D0,#c38bff,#8fb8ff);transform-origin:50% 0;transform:scaleY(0);box-shadow:0 0 12px rgba(255,126,182,.6)}
+html.intro .pg,html.loading .pg{opacity:0}
+.cue{position:absolute;left:50%;bottom:calc(20px + env(safe-area-inset-bottom));z-index:9;transform:translateX(-50%);display:grid;justify-items:center;gap:10px;padding:6px 10px;border:0;background:none;cursor:pointer;font-size:10px;letter-spacing:.32em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,.8);transition:opacity .8s ease .3s}
+.cue i{position:relative;width:1px;height:46px;overflow:hidden;background:rgba(255,255,255,.22)}
+.cue i::after{content:"";position:absolute;left:0;top:0;width:100%;height:40%;background:#fff;animation:cue 1.9s cubic-bezier(.65,0,.35,1) infinite}
+@keyframes cue{from{transform:translateY(-100%)}to{transform:translateY(260%)}}
+html.intro .cue{opacity:0;transition:none}
+@media (max-height:600px){.cue{display:none}}
+
+@media (prefers-reduced-motion:reduce){
+  .wi{transform:none!important}
+  .cue i::after{animation:none}
+}

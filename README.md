@@ -19,3 +19,7 @@ Shared styles are in `css/site.css` and shared behaviour in `js/site.js`. The ho
 The intro plays once per browser session (a refresh replays it); visitors who prefer reduced motion get the final frame straight away.
 
 Plain HTML/CSS/JS — no build step. Open `index.html` through any static server (or GitHub Pages).
+
+## Snap scrolling and motion
+
+Every section is one screen. A wheel tick, swipe, arrow key or Page Down glides exactly one screen (`js/site.js`, the SNAP block); sections taller than a phone screen get extra stops so each stop starts on a whole card. Headings rise word by word, images wipe open from a slow zoom, and the hero splits into depth as you leave it. Styles are in `css/motion.css`. People who turn off animations in their device settings get normal scrolling with everything shown.

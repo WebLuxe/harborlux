@@ -155,10 +155,19 @@
       if (finished) return; finished = true; answer("film");
       // skipped early: jump the track to just before its big hit so it still lands on the cut
       if (music && music.dataset.live && !music.paused && vid.duration && vid.currentTime < vid.duration - 0.4) { try { music.currentTime = HIT - 0.56; } catch (e) {} }
-      flash.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 140, easing: "ease-in", fill: "forwards" }).onfinish = function () {
-        vid.pause(); endFilm(); startHero();
-        flash.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 900, easing: "ease-out", fill: "forwards" });
+      // the film holds its last frame and the flash peaks exactly on the track's hit
+      var t0 = performance.now(), hasBeat = music && music.dataset.live && !music.paused;
+      var wait = function () {
+        var late = performance.now() - t0 > 1200;
+        if (!late && hasBeat && music.currentTime < HIT - 0.15) { requestAnimationFrame(wait); return; }
+        flash.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 150, easing: "cubic-bezier(.5,0,.9,.4)", fill: "forwards" }).onfinish = function () {
+          vid.pause(); endFilm();
+          var out = function () { flash.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 1100, easing: "cubic-bezier(.16,1,.3,1)", fill: "forwards" }); };
+          if (window.DG_HERO) { var once = false; window.DG_HERO.start(function () { if (!once) { once = true; requestAnimationFrame(out); } }); setTimeout(function () { if (!once) { once = true; out(); } }, 2800); }
+          else out();
+        };
       };
+      wait();
     };
     // phones taller than the film: fill the bars above and below with the film's own colours
     var ambient = function () {

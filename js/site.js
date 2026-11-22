@@ -19,13 +19,44 @@
     onScroll();
   }
 
+  /* ---------- headings rise word by word (split into masked words) ---------- */
+  if (!reduce) {
+    $$("main .h1, main .h2, main .h3, .site__body h3").forEach(function (h) {
+      if (h.closest(".hero")) return;
+      var i = 0;
+      var walk = function (node) {
+        Array.prototype.slice.call(node.childNodes).forEach(function (n) {
+          if (n.nodeType === 3) {
+            var parts = n.textContent.split(/(\s+)/), frag = document.createDocumentFragment();
+            parts.forEach(function (p) {
+              if (!p) return;
+              if (/^\s+$/.test(p)) { frag.appendChild(document.createTextNode(" ")); return; }
+              var wd = document.createElement("span"), wi = document.createElement("span");
+              wd.className = "wd"; wi.className = "wi"; wi.style.setProperty("--i", i++); wi.textContent = p;
+              wd.appendChild(wi); frag.appendChild(wd);
+            });
+            n.parentNode.replaceChild(frag, n);
+          } else if (n.nodeType === 1 && n.tagName !== "BR") {
+            if (n.classList.contains("hl")) n.classList.add("sh-hl");
+            walk(n);
+          }
+        });
+      };
+      if (!h.getAttribute("aria-label")) h.setAttribute("aria-label", h.textContent.replace(/\s+/g, " ").trim());
+      walk(h);
+      $$(".wd", h).forEach(function (w) { w.setAttribute("aria-hidden", "true"); });
+      h.classList.add("sh");
+      if (!h.hasAttribute("data-reveal")) h.setAttribute("data-reveal", "");
+    });
+  }
+
   /* ---------- reveal on scroll ---------- */
   var rev = $$("[data-reveal]");
   if (!IO || reduce) rev.forEach(function (el) { el.classList.add("in"); });
   else {
     var ro = new IntersectionObserver(function (es) {
       es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); ro.unobserve(e.target); } });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    }, { rootMargin: "0px 0px -12% 0px", threshold: 0 });
     rev.forEach(function (el) { ro.observe(el); });
   }
 
@@ -105,6 +136,7 @@
         c.hidden = !show;
         c.classList.toggle("wide", show && f === "all" && c.dataset.wide === "1");
       });
+      if (window.DG && window.DG.measure) window.DG.measure();
     });
   }
   var modal = $("#modal");
@@ -130,12 +162,16 @@
         mUses.innerHTML = "";
         c.dataset.uses.split("|").forEach(function (u) { var li = document.createElement("li"); li.textContent = u; mUses.appendChild(li); });
         modal.showModal();
+        document.documentElement.classList.add("lock");
       });
     });
     var close = function () { modal.close(); };
     $(".modal__x", modal).addEventListener("click", close);
     modal.addEventListener("click", function (e) { if (e.target === modal) close(); });
-    modal.addEventListener("close", function () { var v = $("video", mMedia); if (v) v.pause(); });
+    modal.addEventListener("close", function () {
+      var v = $("video", mMedia); if (v) v.pause();
+      document.documentElement.classList.remove("lock");
+    });
   }
 
   /* ---------- about: photo deck ---------- */
@@ -308,4 +344,204 @@
       note.className = "form__note"; note.textContent = "Opening your mail app…";
     });
   }
+
+  /* =========================================================
+     SNAP SCROLL: one wheel tick / swipe / key = one screen, eased.
+     Stops come from the real layout: every section, plus cut points
+     inside sections taller than the screen (so whole cards fit).
+     ========================================================= */
+  var html = document.documentElement;
+  var DG = window.DG = window.DG || {};
+  var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
+  var CUTS = ".tile, .pcard, .site, .trace li, .also article, .board, .gcard, .clip, .sec-head, .contact > *, .kit > *, .split > *, .me > *, .about > *, .music > *, .sq > *, .links, .form, .tiles, .grid-work";
+  var snap = { stops: [0], target: 0, raf: 0, p: 1, how: "", endAt: 0 };
+  var maxY = function () { return Math.max(0, html.scrollHeight - innerHeight); };
+  var docTop = function (el) { return el.getBoundingClientRect().top + window.scrollY; };
+  var locked = function () { return html.classList.contains("loading") || html.classList.contains("intro") || html.classList.contains("lock") || html.classList.contains("arriving"); };
+  var moving = function () { return snap.p < 1; };
+
+  // safety net for odd window sizes: a section a little taller than the window is scaled down just enough to fit
+  function fit() {
+    if (!window.CSS || !CSS.supports("zoom", "0.9")) return;
+    var H = innerHeight;
+    $$("main > section, .site").forEach(function (el) {
+      if (el.classList.contains("hero") || el.classList.contains("sec--sites")) return;
+      var kids = Array.prototype.slice.call(el.children).filter(function (c) { return !/absolute|fixed/.test(getComputedStyle(c).position); });
+      kids.forEach(function (c) { c.style.zoom = ""; });
+      var h = el.offsetHeight;
+      if (h <= H + 2 || h > H * 1.34) return;
+      var cs = getComputedStyle(el), pads = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+      var z = Math.max(0.74, (H - pads - 2) / (h - pads));
+      kids.forEach(function (c) { c.style.zoom = z.toFixed(3); });
+    });
+  }
+
+  function measure() {
+    var H = innerHeight, max = maxY(), out = [];
+    var nav = $("#nav"), off = (nav ? Math.max(0, nav.getBoundingClientRect().bottom) : 0) + 14;
+    var blocks = $$("main > *").concat($$(".foot")).filter(function (el) {
+      return el.offsetHeight > 0 && !/fixed|absolute/.test(getComputedStyle(el).position) && el.tagName !== "DIALOG";
+    });
+    blocks.forEach(function (b) {
+      var top = docTop(b), h = b.offsetHeight, last = top + h - H;
+      out.push([top, 0]);
+      if (h <= H + 12) return;
+      // taller than the screen: step through it, starting each screen at the top of a card or row where one fits
+      var seen = {}, cuts = [];
+      $$(CUTS, b).forEach(function (c) {
+        if (!c.offsetHeight) return;
+        var y = Math.round(docTop(c) - (c.matches(".site") ? 0 : off));
+        if (!seen[y]) { seen[y] = 1; cuts.push(y); }
+      });
+      cuts.sort(function (x, y) { return x - y; });
+      var at = top;
+      for (var g = 0; g < 40 && last - at > 12; g++) {
+        if (last <= at + H - off + 2) { at = last; out.push([at, 1]); break; }
+        var fitC = cuts.filter(function (c) { return c > at + H * 0.34 && c <= at + H - off + 2 && c <= last + 12; });
+        at = fitC.length ? fitC[fitC.length - 1] : Math.min(at + H - off, last);
+        if (last - at < H * 0.22) at = last;
+        out.push([at, 1]);
+      }
+    });
+    out.sort(function (x, y) { return x[0] - y[0]; });
+    var stops = [];
+    out.forEach(function (o) {
+      var y = clamp(Math.round(o[0]), 0, max), gap = stops.length ? y - stops[stops.length - 1] : 1e9;
+      if (gap > H * 0.22) stops.push(y);
+    });
+    if (!stops.length) stops.push(0);
+    if (max - stops[stops.length - 1] > H * 0.1) stops.push(max); else if (stops.length > 1) stops[stops.length - 1] = max;
+    if (stops[0] !== 0) stops.unshift(0);
+    snap.stops = stops;
+    return stops;
+  }
+  var nearest = function (y) { return snap.stops.reduce(function (a, b) { return Math.abs(b - y) < Math.abs(a - y) ? b : a; }, snap.stops[0]); };
+
+  var EASE = {
+    wheel: function (p) { return p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; },   // cubic in-out
+    touch: function (p) { return 1 - Math.pow(1 - p, 4); },                                       // quart out
+    fix: function (p) { return 1 - (1 - p) * (1 - p); }
+  };
+  function scrollToY(y, how) {
+    how = how || "wheel";
+    var from = window.scrollY, dist = Math.abs(y - from);
+    snap.target = y; snap.how = how;
+    cancelAnimationFrame(snap.raf);
+    if (dist < 1) { snap.p = 1; return; }
+    var screens = dist / innerHeight;
+    var dur = 1000 * (how === "touch" ? clamp(0.6 + screens * 0.3, 0.65, 1.2) : how === "fix" ? 0.55 : clamp(0.85 + screens * 0.32, 0.95, 1.6));
+    var ease = EASE[how] || EASE.wheel, t0 = performance.now();
+    snap.p = 0;
+    var f = function (now) {
+      var p = Math.min(1, (now - t0) / dur);
+      snap.p = p;
+      window.scrollTo(0, from + (y - from) * ease(p));
+      if (p < 1) snap.raf = requestAnimationFrame(f); else snap.endAt = performance.now();
+    };
+    snap.raf = requestAnimationFrame(f);
+  }
+  function step(dir, how) {
+    if (locked()) return false;
+    if (moving() && snap.p < (snap.how === "touch" ? 0.55 : 0.8)) return false;
+    var base = moving() ? snap.target : window.scrollY, next = null;
+    if (dir > 0) { for (var i = 0; i < snap.stops.length; i++) if (snap.stops[i] > base + 4) { next = snap.stops[i]; break; } }
+    else { for (var j = snap.stops.length - 1; j >= 0; j--) if (snap.stops[j] < base - 4) { next = snap.stops[j]; break; } }
+    if (next === null) return false;
+    scrollToY(next, how);
+    return true;
+  }
+  DG.measure = function () { fit(); measure(); };
+  DG.go = step;
+  DG.stops = function () { return snap.stops.slice(); };
+  DG.scrollTo = function (y, how) { scrollToY(clamp(y, 0, maxY()), how); };
+
+  if (!reduce) {
+    html.classList.add("snap");
+    var inOverlay = function (t) { return t && t.closest && t.closest("dialog[open]"); };
+    var inField = function (t) { return t && (/^(input|textarea|select)$/i.test(t.tagName) || t.isContentEditable); };
+
+    // wheel + trackpad: a trackpad keeps sending a fading tail after the fingers lift; that tail is not a new scroll
+    var wLast = 0, wAbs = 0;
+    addEventListener("wheel", function (e) {
+      if (e.ctrlKey || inOverlay(e.target)) return;
+      if (e.target.closest && e.target.closest(".reel") && Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      var now = performance.now(), abs = Math.abs(e.deltaY), gap = now - wLast, prev = wAbs;
+      wLast = now; wAbs = abs;
+      if (locked() || abs < 2 || Math.abs(e.deltaX) > abs) return;
+      if (moving() && snap.p < 0.8) return;
+      var fresh = gap > 130 || abs > prev * 1.5 + 6 || (abs >= 80 && !moving() && now - snap.endAt > 260);
+      if (!fresh) return;
+      step(e.deltaY > 0 ? 1 : -1, "wheel");
+    }, { passive: false });
+
+    // touch: a swipe starts the move straight away
+    var t0 = null;
+    addEventListener("touchstart", function (e) {
+      t0 = e.touches.length === 1 && !inOverlay(e.target) && !inField(e.target) ? { x: e.touches[0].clientX, y: e.touches[0].clientY, done: false } : null;
+    }, { passive: true });
+    addEventListener("touchmove", function (e) {
+      if (!t0 || t0.done || e.touches.length !== 1) return;
+      var dx = e.touches[0].clientX - t0.x, dy = e.touches[0].clientY - t0.y;
+      if (Math.abs(dy) < 22 || Math.abs(dy) < Math.abs(dx) * 1.3) return;
+      t0.done = true; step(dy < 0 ? 1 : -1, "touch");
+    }, { passive: true });
+    addEventListener("touchend", function () { t0 = null; }, { passive: true });
+    addEventListener("touchcancel", function () { t0 = null; }, { passive: true });
+
+    addEventListener("keydown", function (e) {
+      if (e.defaultPrevented || e.metaKey || e.ctrlKey || e.altKey || inField(e.target) || inOverlay(e.target) || inOverlay(document.activeElement)) return;
+      var k = e.key, onBtn = e.target.closest && e.target.closest("button, a, [tabindex], summary"), dir = 0;
+      if (k === "ArrowDown" || k === "PageDown" || (k === " " && !e.shiftKey && !onBtn)) dir = 1;
+      else if (k === "ArrowUp" || k === "PageUp" || (k === " " && e.shiftKey && !onBtn)) dir = -1;
+      else if (k === "Home") { e.preventDefault(); if (!locked()) scrollToY(0); return; }
+      else if (k === "End") { e.preventDefault(); if (!locked()) scrollToY(snap.stops[snap.stops.length - 1]); return; }
+      if (!dir) return;
+      if ($("#kit") && /^[asdfgh]$/i.test(k)) return;
+      e.preventDefault(); step(dir, "wheel");
+    });
+
+    // anything else that moves the page (tabbing, find-in-page, scrollbar) settles on the nearest screen
+    var idle = 0;
+    addEventListener("scroll", function () {
+      clearTimeout(idle);
+      idle = setTimeout(function () {
+        if (locked() || moving() || inField(document.activeElement)) return;
+        var n = nearest(window.scrollY); if (Math.abs(n - window.scrollY) > 2) scrollToY(n, "fix");
+      }, 170);
+    }, { passive: true });
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a || a.classList.contains("skip")) return;
+      var t = document.querySelector(a.getAttribute("href")); if (!t) return;
+      e.preventDefault(); scrollToY(nearest(docTop(t)));
+    });
+
+    var rz = 0, lastW = innerWidth, lastH = innerHeight;
+    var remeasure = function () { fit(); measure(); if (!locked() && !moving()) window.scrollTo(0, nearest(window.scrollY)); };
+    addEventListener("resize", function () {
+      clearTimeout(rz);
+      rz = setTimeout(function () {
+        // phones fire resize when the address bar moves: only a real change of size re-lays the page out
+        if (innerWidth === lastW && Math.abs(innerHeight - lastH) < 120 && matchMedia("(pointer: coarse)").matches) return;
+        lastW = innerWidth; lastH = innerHeight; remeasure();
+      }, 220);
+    });
+    addEventListener("load", function () { setTimeout(remeasure, 60); });
+    addEventListener("dg:intro", function () { setTimeout(remeasure, 30); });
+    if (document.fonts) document.fonts.ready.then(function () { fit(); measure(); });
+    fit(); measure();
+
+    // slim progress line on the right edge
+    var pg = document.createElement("div"); pg.className = "pg"; pg.setAttribute("aria-hidden", "true"); pg.innerHTML = "<i></i>";
+    document.body.appendChild(pg);
+    var pgi = pg.firstChild;
+    var paintPg = function () { pgi.style.transform = "scaleY(" + (window.scrollY / (maxY() || 1)).toFixed(4) + ")"; };
+    addEventListener("scroll", paintPg, { passive: true }); paintPg();
+  } else {
+    fit();
+  }
+
+  /* scroll cue on the hero */
+  var cue = $(".cue");
+  if (cue) cue.addEventListener("click", function () { if (!step(1, "wheel")) window.scrollBy(0, innerHeight); });
 })();
