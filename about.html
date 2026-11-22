@@ -14,10 +14,24 @@
 <link rel="preconnect" href="https://images.higgs.ai" crossorigin>
 <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" crossorigin>
 <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=1">
-<script src="js/site.js?v=1" defer></script>
+<script>(function(){var h=document.documentElement,home=h.getAttribute("data-page")==="home",s;window.DG_EXTRA=[];try{s=sessionStorage;var n=performance.getEntriesByType("navigation")[0];if(n&&n.type==="reload"){s.removeItem("dg-seen");s.removeItem("dg-home");s.removeItem("dg-wipe")}if(matchMedia("(prefers-reduced-motion: reduce)").matches){s.removeItem("dg-wipe");h.classList.add("nointro");return}if(home&&!s.getItem("dg-home")){s.removeItem("dg-wipe");h.classList.add("intro","filming","loading");return}if(home)h.classList.add("nointro");if(s.getItem("dg-wipe"))h.classList.add("arriving");else if(!s.getItem("dg-seen"))h.classList.add("loading")}catch(e){if(home)h.classList.add("nointro")}})()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@1,62..125,900&amp;display=swap">
+<link rel="stylesheet" href="css/site.css?v=2">
+<link rel="stylesheet" href="css/intro.css?v=2">
+<script src="js/site.js?v=2" defer></script>
+<script src="js/intro.js?v=2" defer></script>
 </head>
 <body>
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__bg"></div>
+  <div class="loader__top"><span>Doorgesh</span><span>Zenn Prxd · Mauritius</span></div>
+  <div class="loader__word"><div class="loader__w"><span class="loader__out">Doorgesh</span><span class="loader__fill">Doorgesh</span></div></div>
+  <div class="loader__bottom"><span class="loader__msg">Loading the drive</span><span class="loader__num">000</span></div>
+  <div class="loader__line"><i></i></div>
+</div>
+<div class="wipe" id="wipe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><span></span></div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav">
   <a class="brand" href="index.html" aria-label="Doorgesh, home">DOORGESH</a>
@@ -49,7 +63,7 @@
       <ul class="handles"><li><span>YouTube</span>Zenn Prxd</li><li><span>TikTok</span>@r0shibhadain</li><li><span>Based in</span>Mauritius</li></ul>
     </div>
     <div class="deck">
-      <div class="deck__cards" id="deckCards" tabindex="0" aria-label="Photos of Doorgesh. Use the arrow keys to flip through."><figure class="card"><img src="assets/img/doorgesh-1.webp" srcset="assets/img/doorgesh-1.webp 1x, assets/img/doorgesh-1-hd.webp 2x" alt="Doorgesh in a black Adidas tee, mirror selfie" style="filter:url(#duo-teal);object-position:52% 18%" decoding="async"><figcaption>01 / 06</figcaption></figure><figure class="card"><img src="assets/img/doorgesh-2.webp" srcset="assets/img/doorgesh-2.webp 1x, assets/img/doorgesh-2-hd.webp 2x" alt="Doorgesh, side-on mirror selfie" style="filter:url(#duo-violet);object-position:30% 35%" decoding="async" loading="lazy"><figcaption>02 / 06</figcaption></figure><figure class="card"><img src="assets/img/doorgesh-3.webp" srcset="assets/img/doorgesh-3.webp 1x, assets/img/doorgesh-3-hd.webp 2x" alt="Doorgesh in a dark blazer" style="filter:url(#duo-pink);object-position:40% 25%" decoding="async" loading="lazy"><figcaption>03 / 06</figcaption></figure><figure class="card"><img src="assets/img/doorgesh-4.webp" srcset="assets/img/doorgesh-4.webp 1x, assets/img/doorgesh-4-hd.webp 2x" alt="Doorgesh flexing, black and white" style="filter:url(#duo-sunset);object-position:45% 40%" decoding="async" loading="lazy"><figcaption>04 / 06</figcaption></figure><figure class="card"><img src="assets/img/real/me-86.webp" srcset="assets/img/real/me-86.webp 1x, assets/img/real/me-86-hd.webp 2x" alt="Doorgesh in sunglasses next to a white Toyota 86" style="filter:url(#duo-sunset);object-position:72% 40%" decoding="async" loading="lazy"><figcaption>05 / 06</figcaption></figure><figure class="card"><img src="assets/img/real/me-mirror.webp" srcset="assets/img/real/me-mirror.webp 1x, assets/img/real/me-mirror-hd.webp 2x" alt="Doorgesh in a blue tee, mirror selfie" style="filter:url(#duo-teal);object-position:50% 10%" decoding="async" loading="lazy"><figcaption>06 / 06</figcaption></figure></div>
+      <div class="deck__cards" id="deckCards" data-cursor="Drag" tabindex="0" aria-label="Photos of Doorgesh. Use the arrow keys to flip through."><figure class="card"><img src="assets/img/doorgesh-1.webp" srcset="assets/img/doorgesh-1.webp 1x, assets/img/doorgesh-1-hd.webp 2x" alt="Doorgesh in a black Adidas tee, mirror selfie" style="filter:url(#duo-teal);object-position:52% 18%" decoding="async"><figcaption>01 / 06</figcaption></figure><figure class="card"><img src="assets/img/doorgesh-2.webp" srcset="assets/img/doorgesh-2.webp 1x, assets/img/doorgesh-2-hd.webp 2x" alt="Doorgesh, side-on mirror selfie" style="filter:url(#duo-violet);object-position:30% 35%" decoding="async" loading="lazy"><figcaption>02 / 06</figcaption></figure><figure class="card"><img src="assets/img/doorgesh-3.webp" srcset="assets/img/doorgesh-3.webp 1x, assets/img/doorgesh-3-hd.webp 2x" alt="Doorgesh in a dark blazer" style="filter:url(#duo-pink);object-position:40% 25%" decoding="async" loading="lazy"><figcaption>03 / 06</figcaption></figure><figure class="card"><img src="assets/img/doorgesh-4.webp" srcset="assets/img/doorgesh-4.webp 1x, assets/img/doorgesh-4-hd.webp 2x" alt="Doorgesh flexing, black and white" style="filter:url(#duo-sunset);object-position:45% 40%" decoding="async" loading="lazy"><figcaption>04 / 06</figcaption></figure><figure class="card"><img src="assets/img/real/me-86.webp" srcset="assets/img/real/me-86.webp 1x, assets/img/real/me-86-hd.webp 2x" alt="Doorgesh in sunglasses next to a white Toyota 86" style="filter:url(#duo-sunset);object-position:72% 40%" decoding="async" loading="lazy"><figcaption>05 / 06</figcaption></figure><figure class="card"><img src="assets/img/real/me-mirror.webp" srcset="assets/img/real/me-mirror.webp 1x, assets/img/real/me-mirror-hd.webp 2x" alt="Doorgesh in a blue tee, mirror selfie" style="filter:url(#duo-teal);object-position:50% 10%" decoding="async" loading="lazy"><figcaption>06 / 06</figcaption></figure></div>
       <div class="deck__ctrl">
         <button type="button" class="rbtn" id="deckPrev" aria-label="Previous photo"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3M7 4 3 8l4 4"/></svg></button>
         <span id="deckCount" aria-live="polite">01 / 06</span>

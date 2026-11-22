@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-page="home">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -14,8 +14,12 @@
 <link rel="preconnect" href="https://images.higgs.ai" crossorigin>
 <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" crossorigin>
 <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
-<script>(function(){var h=document.documentElement,r=false,s=null;try{r=matchMedia("(prefers-reduced-motion: reduce)").matches;s=sessionStorage.getItem("dg-seen")}catch(e){}h.classList.add(!r&&!s?"intro":"nointro")})()</script>
-<link rel="stylesheet" href="css/site.css?v=1">
+<script>(function(){var h=document.documentElement,home=h.getAttribute("data-page")==="home",s;window.DG_EXTRA=[];try{s=sessionStorage;var n=performance.getEntriesByType("navigation")[0];if(n&&n.type==="reload"){s.removeItem("dg-seen");s.removeItem("dg-home");s.removeItem("dg-wipe")}if(matchMedia("(prefers-reduced-motion: reduce)").matches){s.removeItem("dg-wipe");h.classList.add("nointro");return}if(home&&!s.getItem("dg-home")){s.removeItem("dg-wipe");h.classList.add("intro","filming","loading");return}if(home)h.classList.add("nointro");if(s.getItem("dg-wipe"))h.classList.add("arriving");else if(!s.getItem("dg-seen"))h.classList.add("loading")}catch(e){if(home)h.classList.add("nointro")}})()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@1,62..125,900&amp;display=swap">
+<link rel="stylesheet" href="css/site.css?v=2">
+<link rel="stylesheet" href="css/intro.css?v=2">
 <style>
 /* ---------- hero + stage (Claim Your Summit) ---------- */
 .hero{
@@ -112,9 +116,25 @@ html.intro .word .l,html.intro .kicker{opacity:0}
 html.intro .front{transform:translateY(66%)}
 html.intro .shade{opacity:0}
 </style>
-<script src="js/site.js?v=1" defer></script>
+<script src="js/site.js?v=2" defer></script>
+<script src="js/intro.js?v=2" defer></script>
 </head>
 <body>
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__bg"></div>
+  <div class="loader__top"><span>Doorgesh</span><span>Zenn Prxd · Mauritius</span></div>
+  <div class="loader__word"><div class="loader__w"><span class="loader__out">Doorgesh</span><span class="loader__fill">Doorgesh</span></div></div>
+  <div class="loader__bottom"><span class="loader__msg">Loading the drive</span><span class="loader__num">000</span></div>
+  <div class="loader__line"><i></i></div>
+</div>
+<div class="wipe" id="wipe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><span></span></div>
+<div class="film" id="film">
+  <canvas class="film__amb" aria-hidden="true"></canvas>
+  <video muted playsinline preload="auto" aria-label="Intro film: a drive into a neon city ending on the name Doorgesh"></video>
+  <button type="button" class="film__snd" aria-pressed="false">Sound off</button>
+  <button type="button" class="film__skip">Skip intro →</button>
+</div>
+<div class="flash" id="flash" aria-hidden="true"></div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav">
   <a class="brand" href="index.html" aria-label="Doorgesh, home">DOORGESH</a>
@@ -189,10 +209,10 @@ html.intro .shade{opacity:0}
       <p class="lede" data-reveal="3">Everything here I wired, coded and tested myself.</p>
     </div>
     <div class="tiles">
-      <a class="tile" href="work.html" data-reveal><img src="assets/img/mood/ionic.webp" srcset="assets/img/mood/ionic.webp 1400w, assets/img/mood/ionic-hd.webp 2400w" sizes="(max-width:900px) 100vw, 60vw" alt="" loading="lazy" decoding="async"><span class="tile__go"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></span><span class="tile__k">01 · Physics</span><span class="tile__t">The Ionic Engine</span><span class="tile__d">Air pushed by electricity alone. First place, Science Quest 2026.</span></a>
-      <a class="tile" href="work.html" data-reveal="2"><img src="assets/img/real/tb21.webp" srcset="assets/img/real/tb21.webp 1x, assets/img/real/tb21-hd.webp 2x" alt="" loading="lazy" decoding="async"><span class="tile__go"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></span><span class="tile__k">02 · Audio</span><span class="tile__t">Amp &amp; sub systems</span><span class="tile__d">Class-D amp boards in boxes I built and tuned myself.</span></a>
-      <a class="tile" href="work.html" data-reveal><img src="assets/img/mood/sim.webp" srcset="assets/img/mood/sim.webp 1400w, assets/img/mood/sim-hd.webp 2400w" sizes="(max-width:900px) 100vw, 60vw" alt="" loading="lazy" decoding="async"><span class="tile__go"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></span><span class="tile__k">03 · Sim rig</span><span class="tile__t">EuroSim wheel</span><span class="tile__d">A force-feedback wheel and shifter for Euro Truck Simulator 2.</span></a>
-      <a class="tile" href="work.html" data-reveal="2"><img src="assets/video/real/wiring.jpg" alt="" loading="lazy" decoding="async"><span class="tile__go"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></span><span class="tile__k">04 · Vision</span><span class="tile__t">AI sorting bin</span><span class="tile__d">An ESP32-CAM bin that sees what you drop in and sorts it.</span></a>
+      <a class="tile" data-cursor="View" href="work.html" data-reveal><img src="assets/img/mood/ionic.webp" srcset="assets/img/mood/ionic.webp 1400w, assets/img/mood/ionic-hd.webp 2400w" sizes="(max-width:900px) 100vw, 60vw" alt="" loading="lazy" decoding="async"><span class="tile__go"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></span><span class="tile__k">01 · Physics</span><span class="tile__t">The Ionic Engine</span><span class="tile__d">Air pushed by electricity alone. First place, Science Quest 2026.</span></a>
+      <a class="tile" data-cursor="View" href="work.html" data-reveal="2"><img src="assets/img/real/tb21.webp" srcset="assets/img/real/tb21.webp 1x, assets/img/real/tb21-hd.webp 2x" alt="" loading="lazy" decoding="async"><span class="tile__go"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></span><span class="tile__k">02 · Audio</span><span class="tile__t">Amp &amp; sub systems</span><span class="tile__d">Class-D amp boards in boxes I built and tuned myself.</span></a>
+      <a class="tile" data-cursor="View" href="work.html" data-reveal><img src="assets/img/mood/sim.webp" srcset="assets/img/mood/sim.webp 1400w, assets/img/mood/sim-hd.webp 2400w" sizes="(max-width:900px) 100vw, 60vw" alt="" loading="lazy" decoding="async"><span class="tile__go"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></span><span class="tile__k">03 · Sim rig</span><span class="tile__t">EuroSim wheel</span><span class="tile__d">A force-feedback wheel and shifter for Euro Truck Simulator 2.</span></a>
+      <a class="tile" data-cursor="View" href="work.html" data-reveal="2"><img src="assets/video/real/wiring.jpg" alt="" loading="lazy" decoding="async"><span class="tile__go"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></span><span class="tile__k">04 · Vision</span><span class="tile__t">AI sorting bin</span><span class="tile__d">An ESP32-CAM bin that sees what you drop in and sorts it.</span></a>
     </div>
     <div class="more"><a class="btn btn--ghost" href="work.html">All my builds <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
   </div>
@@ -463,14 +483,14 @@ html.intro .shade{opacity:0}
     if (Math.abs(r - tilt.playbackRate) > 0.01 * base) tilt.playbackRate = r;
   }
 
-  var started = false, t0 = 0;
+  var started = false, t0 = 0, failsafe = 0;
   function finish() {
     anims.forEach(function (a) { a.currentTime = D; });
     root.classList.remove("intro");
     anims.forEach(function (a) { a.cancel(); });
     opening.hidden = true; doors.hidden = true;
     tilt.pause(); tilt.removeAttribute("src");
-    try { sessionStorage.setItem("dg-seen", "1"); } catch (e) {}
+    try { sessionStorage.setItem("dg-seen", "1"); sessionStorage.setItem("dg-home", "1"); } catch (e) {}
   }
   function frame(now) {
     var ms = Math.min(now - t0, D);
@@ -484,13 +504,27 @@ html.intro .shade{opacity:0}
   function start() {
     if (started) return;
     started = true;
+    clearTimeout(failsafe);
+    loadRain();
     requestAnimationFrame(function (now) { t0 = now; frame(now); });
   }
-  var failsafe = setTimeout(start, 5000);
-  Promise.all(imgReady.concat([tiltReady])).then(function () {
-    loadRain();
-    setTimeout(function () { clearTimeout(failsafe); start(); }, 120);
-  });
+  var ready = Promise.all(imgReady.concat([tiltReady]));
+  var heroP = { p: 0 };
+  (window.DG_EXTRA = window.DG_EXTRA || []).push(heroP);   // the loader waits for the hero too
+  ready.then(function () { heroP.p = 1; loadRain(); });
+
+  if (root.classList.contains("filming")) {
+    // the intro film plays first; intro.js calls start() on the flash that cuts from the film to the doors
+    window.DG_HERO = {
+      start: function () {
+        Promise.race([ready, new Promise(function (r) { setTimeout(r, 2500); })]).then(function () { setTimeout(start, 60); });
+      }
+    };
+    failsafe = setTimeout(start, 45000);
+  } else {
+    failsafe = setTimeout(start, 5000);
+    ready.then(function () { setTimeout(start, 120); });
+  }
 })();
 </script>
 </body>

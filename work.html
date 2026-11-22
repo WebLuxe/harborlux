@@ -14,10 +14,24 @@
 <link rel="preconnect" href="https://images.higgs.ai" crossorigin>
 <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" crossorigin>
 <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=1">
-<script src="js/site.js?v=1" defer></script>
+<script>(function(){var h=document.documentElement,home=h.getAttribute("data-page")==="home",s;window.DG_EXTRA=[];try{s=sessionStorage;var n=performance.getEntriesByType("navigation")[0];if(n&&n.type==="reload"){s.removeItem("dg-seen");s.removeItem("dg-home");s.removeItem("dg-wipe")}if(matchMedia("(prefers-reduced-motion: reduce)").matches){s.removeItem("dg-wipe");h.classList.add("nointro");return}if(home&&!s.getItem("dg-home")){s.removeItem("dg-wipe");h.classList.add("intro","filming","loading");return}if(home)h.classList.add("nointro");if(s.getItem("dg-wipe"))h.classList.add("arriving");else if(!s.getItem("dg-seen"))h.classList.add("loading")}catch(e){if(home)h.classList.add("nointro")}})()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@1,62..125,900&amp;display=swap">
+<link rel="stylesheet" href="css/site.css?v=2">
+<link rel="stylesheet" href="css/intro.css?v=2">
+<script src="js/site.js?v=2" defer></script>
+<script src="js/intro.js?v=2" defer></script>
 </head>
 <body>
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__bg"></div>
+  <div class="loader__top"><span>Doorgesh</span><span>Zenn Prxd · Mauritius</span></div>
+  <div class="loader__word"><div class="loader__w"><span class="loader__out">Doorgesh</span><span class="loader__fill">Doorgesh</span></div></div>
+  <div class="loader__bottom"><span class="loader__msg">Loading the drive</span><span class="loader__num">000</span></div>
+  <div class="loader__line"><i></i></div>
+</div>
+<div class="wipe" id="wipe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><span></span></div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav">
   <a class="brand" href="index.html" aria-label="Doorgesh, home">DOORGESH</a>
@@ -48,49 +62,49 @@
 
 <section class="sec sec--tight" aria-label="Builds">
   <div class="wrap grid-work">
-      <button type="button" class="pcard wide" data-wide="1" data-cat="audio hardware" data-tagline="Audio hardware" data-uses="TPA3116D2|ZK-TB21|ZK-HT21|Custom subwoofer boxes" data-reveal>
+      <button type="button" data-cursor="Open" class="pcard wide" data-wide="1" data-cat="audio hardware" data-tagline="Audio hardware" data-uses="TPA3116D2|ZK-TB21|ZK-HT21|Custom subwoofer boxes" data-reveal>
         <div class="pcard__art" aria-hidden="true"><video muted loop playsinline preload="none" poster="assets/video/real/ampcase.jpg" data-src="assets/video/real/ampcase.mp4"></video></div>
         <span class="pcard__plus" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></span>
         <div class="pcard__body"><p class="pcard__tag">Audio hardware</p><h3>Amp &amp; sub systems</h3><p>High-power class-D boards in custom-built boxes, tuned by ear.</p></div>
         <template><p>I build and tune amplifier systems on TPA3116D2, ZK-TB21 and ZK-HT21 boards, paired with custom subwoofers and speaker enclosures.</p><p>Every build gets tuned by ear first, then cleaned up with DSP.</p></template>
       </button>
-      <button type="button" class="pcard" data-cat="physics hardware" data-tagline="1st place · RGSC Science Quest 2026" data-uses="High voltage|Electrohydrodynamics|Physics research" data-reveal>
+      <button type="button" data-cursor="Open" class="pcard" data-cat="physics hardware" data-tagline="1st place · RGSC Science Quest 2026" data-uses="High voltage|Electrohydrodynamics|Physics research" data-reveal>
         <div class="pcard__art" aria-hidden="true"><img src="assets/img/mood/ionic.webp" srcset="assets/img/mood/ionic.webp 1400w, assets/img/mood/ionic-hd.webp 2400w" sizes="(max-width:900px) 100vw, 60vw" alt="" loading="lazy" decoding="async"></div>
         <span class="pcard__plus" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></span>
         <div class="pcard__body"><p class="pcard__tag">Applied physics<em>1st place</em></p><h3>The Ionic Engine</h3><p>Air moved by electricity alone. No propeller, no motor.</p></div>
         <template><p>A high-voltage atmospheric electrohydrodynamic propulsion project. A strong electric field ionises the air, the ions drift toward a collector and drag the air with them, so it makes thrust with no moving parts.</p><p>It took first place at the 11th Science Quest, the Rajiv Gandhi Science Centre&rsquo;s national competition, with winners announced on 28 May 2026.</p></template>
       </button>
-      <button type="button" class="pcard" data-cat="hardware code" data-tagline="Sim rig" data-uses="Microcontrollers|Potentiometers|3D-modelled enclosures|Tinkercad" data-reveal>
+      <button type="button" data-cursor="Open" class="pcard" data-cat="hardware code" data-tagline="Sim rig" data-uses="Microcontrollers|Potentiometers|3D-modelled enclosures|Tinkercad" data-reveal>
         <div class="pcard__art" aria-hidden="true"><img src="assets/img/mood/sim.webp" srcset="assets/img/mood/sim.webp 1400w, assets/img/mood/sim-hd.webp 2400w" sizes="(max-width:900px) 100vw, 60vw" alt="" loading="lazy" decoding="async"></div>
         <span class="pcard__plus" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></span>
         <div class="pcard__body"><p class="pcard__tag">Sim rig</p><h3>EuroSim wheel &amp; shifter</h3><p>A force-feedback wheel and gear shifter for Euro Truck Simulator 2.</p></div>
         <template><p>A force-feedback steering wheel and gear shifter for Euro Truck Simulator 2, built from microcontrollers, potentiometers and enclosures I modelled in 3D.</p></template>
       </button>
-      <button type="button" class="pcard" data-cat="code hardware" data-tagline="Computer vision" data-uses="ESP32-CAM|Computer vision|Arduino C++" data-reveal>
+      <button type="button" data-cursor="Open" class="pcard" data-cat="code hardware" data-tagline="Computer vision" data-uses="ESP32-CAM|Computer vision|Arduino C++" data-reveal>
         <div class="pcard__art" aria-hidden="true"><video muted loop playsinline preload="none" poster="assets/video/real/wiring.jpg" data-src="assets/video/real/wiring.mp4"></video></div>
         <span class="pcard__plus" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></span>
         <div class="pcard__body"><p class="pcard__tag">Computer vision</p><h3>AI sorting bin</h3><p>An ESP32-CAM bin that sees what you drop in and sorts it.</p></div>
         <template><p>An ESP32-CAM waste-sorting bin that recognises objects and sends each one to the right compartment automatically.</p></template>
       </button>
-      <button type="button" class="pcard" data-cat="code audio" data-tagline="Embedded" data-uses="WS2812B|Microcontroller|Audio-reactive code" data-reveal>
+      <button type="button" data-cursor="Open" class="pcard" data-cat="code audio" data-tagline="Embedded" data-uses="WS2812B|Microcontroller|Audio-reactive code" data-reveal>
         <div class="pcard__art" aria-hidden="true"><video muted loop playsinline preload="none" poster="assets/video/real/leds.jpg" data-src="assets/video/real/leds.mp4"></video></div>
         <span class="pcard__plus" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></span>
         <div class="pcard__body"><p class="pcard__tag">Embedded</p><h3>Music-reactive ARGB</h3><p>Addressable LEDs that hit on the beat.</p></div>
         <template><p>WS2812B addressable LED setups driven by a microcontroller that listens to the music and lights up on the beat.</p></template>
       </button>
-      <button type="button" class="pcard" data-cat="audio" data-tagline="Zenn Prxd on YouTube" data-uses="DaVinci Resolve|Avee Player|Shotcut|Filmora" data-reveal>
+      <button type="button" data-cursor="Open" class="pcard" data-cat="audio" data-tagline="Zenn Prxd on YouTube" data-uses="DaVinci Resolve|Avee Player|Shotcut|Filmora" data-reveal>
         <div class="pcard__art" aria-hidden="true"><img src="assets/img/mood/dsp.webp" srcset="assets/img/mood/dsp.webp 1400w, assets/img/mood/dsp-hd.webp 2400w" sizes="(max-width:900px) 100vw, 60vw" alt="" loading="lazy" decoding="async"></div>
         <span class="pcard__plus" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></span>
         <div class="pcard__body"><p class="pcard__tag">Media</p><h3>DSP remasters</h3><p>Remasters and visualisers with 200K+ views on YouTube.</p></div>
         <template><p>Remasters and visualisers on YouTube as Zenn Prxd: more than 200,000 views and over 1,000 subscribers.</p></template>
       </button>
-      <button type="button" class="pcard" data-cat="garage" data-tagline="Garage" data-uses="Derailleur tuning|Brake servicing|Vinyl wrapping" data-reveal>
+      <button type="button" data-cursor="Open" class="pcard" data-cat="garage" data-tagline="Garage" data-uses="Derailleur tuning|Brake servicing|Vinyl wrapping" data-reveal>
         <div class="pcard__art" aria-hidden="true"><video muted loop playsinline preload="none" poster="assets/video/real/bike.jpg" data-src="assets/video/real/bike.mp4"></video></div>
         <span class="pcard__plus" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></span>
         <div class="pcard__body"><p class="pcard__tag">Garage</p><h3>Raleigh 21-speed</h3><p>Tuned, serviced and wrapped in custom vinyl.</p></div>
         <template><p>A 21-speed Raleigh with derailleur adjustment, brake servicing, gear tuning and a custom vinyl wrap. I do car vinyl wraps too.</p></template>
       </button>
-      <button type="button" class="pcard" data-cat="garage" data-tagline="In progress" data-uses="4E-FE|4A-GE Blacktop|Corolla EE111" data-reveal>
+      <button type="button" data-cursor="Open" class="pcard" data-cat="garage" data-tagline="In progress" data-uses="4E-FE|4A-GE Blacktop|Corolla EE111" data-reveal>
         <div class="pcard__art" aria-hidden="true"><video muted loop playsinline preload="none" poster="assets/video/real/ee111.jpg" data-src="assets/video/real/ee111.mp4"></video></div>
         <span class="pcard__plus" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 3v10M3 8h10"/></svg></span>
         <div class="pcard__body"><p class="pcard__tag">Automotive</p><h3>Toyota engine study</h3><p>The 4E-FE, the 4A-GE Blacktop and a Corolla EE111 plan.</p></div>

@@ -14,10 +14,24 @@
 <link rel="preconnect" href="https://images.higgs.ai" crossorigin>
 <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" crossorigin>
 <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/site.css?v=1">
-<script src="js/site.js?v=1" defer></script>
+<script>(function(){var h=document.documentElement,home=h.getAttribute("data-page")==="home",s;window.DG_EXTRA=[];try{s=sessionStorage;var n=performance.getEntriesByType("navigation")[0];if(n&&n.type==="reload"){s.removeItem("dg-seen");s.removeItem("dg-home");s.removeItem("dg-wipe")}if(matchMedia("(prefers-reduced-motion: reduce)").matches){s.removeItem("dg-wipe");h.classList.add("nointro");return}if(home&&!s.getItem("dg-home")){s.removeItem("dg-wipe");h.classList.add("intro","filming","loading");return}if(home)h.classList.add("nointro");if(s.getItem("dg-wipe"))h.classList.add("arriving");else if(!s.getItem("dg-seen"))h.classList.add("loading")}catch(e){if(home)h.classList.add("nointro")}})()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@1,62..125,900&amp;display=swap">
+<link rel="stylesheet" href="css/site.css?v=2">
+<link rel="stylesheet" href="css/intro.css?v=2">
+<script src="js/site.js?v=2" defer></script>
+<script src="js/intro.js?v=2" defer></script>
 </head>
 <body>
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader__bg"></div>
+  <div class="loader__top"><span>Doorgesh</span><span>Zenn Prxd · Mauritius</span></div>
+  <div class="loader__word"><div class="loader__w"><span class="loader__out">Doorgesh</span><span class="loader__fill">Doorgesh</span></div></div>
+  <div class="loader__bottom"><span class="loader__msg">Loading the drive</span><span class="loader__num">000</span></div>
+  <div class="loader__line"><i></i></div>
+</div>
+<div class="wipe" id="wipe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><span></span></div>
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav" id="nav">
   <a class="brand" href="index.html" aria-label="Doorgesh, home">DOORGESH</a>
@@ -48,7 +62,7 @@
 <div class="kit-pulse" aria-hidden="true"></div>
 <section class="sec sec--tight" aria-label="Drum kit">
   <div class="wrap kit" id="kit">
-    <div class="pads"><button type="button" class="pad" data-v="kick" data-key="a"><b>Kick</b><span>Key A</span></button><button type="button" class="pad" data-v="snare" data-key="s"><b>Snare</b><span>Key S</span></button><button type="button" class="pad" data-v="hat" data-key="d"><b>Hi-hat</b><span>Key D</span></button><button type="button" class="pad" data-v="clap" data-key="f"><b>Clap</b><span>Key F</span></button><button type="button" class="pad" data-v="bass" data-key="g"><b>808</b><span>Key G</span></button><button type="button" class="pad" data-v="zap" data-key="h"><b>Zap</b><span>Key H</span></button></div>
+    <div class="pads"><button type="button" class="pad" data-cursor="Hit" data-v="kick" data-key="a"><b>Kick</b><span>Key A</span></button><button type="button" class="pad" data-cursor="Hit" data-v="snare" data-key="s"><b>Snare</b><span>Key S</span></button><button type="button" class="pad" data-cursor="Hit" data-v="hat" data-key="d"><b>Hi-hat</b><span>Key D</span></button><button type="button" class="pad" data-cursor="Hit" data-v="clap" data-key="f"><b>Clap</b><span>Key F</span></button><button type="button" class="pad" data-cursor="Hit" data-v="bass" data-key="g"><b>808</b><span>Key G</span></button><button type="button" class="pad" data-cursor="Hit" data-v="zap" data-key="h"><b>Zap</b><span>Key H</span></button></div>
     <figure class="scope" aria-label="Oscilloscope showing the sound you play">
       <canvas id="scope" aria-hidden="true"></canvas>
       <figcaption class="scope__bar"><b>CH1 · Live output</b><span id="scopeLvl">idle</span></figcaption>
